@@ -2,3 +2,4 @@ env/
 .RData
 .Rhistory
 Rplots.pdf
+_targets/
