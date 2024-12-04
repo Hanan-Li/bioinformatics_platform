@@ -19,6 +19,6 @@ def create_workflow(username):
     targets_pipeline_parser.transformJsonAndCreateTargetsPipelineConfig("targets_template.R", "/home/hananli/Documents/bioinformatics_platform/workflow_creation/jinja_templates", data)
     return ''
 
-# @bp.route('/workflow_status', methods= ('GET'))
-# def workflow_status():
-#     return ''
+@bp.route('/workflow_status', methods= ('GET'))
+def workflow_status():
+    return ''
