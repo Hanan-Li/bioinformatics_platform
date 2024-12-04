@@ -7,11 +7,16 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        SECRET_KEY='example-secret-key',
+        DATABASE=os.path.join(app.instance_path, 'db.sqlite3'),
     )
     from . import workflow
+    from . import auth
     app.register_blueprint(workflow.bp)
+    app.register_blueprint(auth.bp)
+    from . import db
+    db.init_app(app)
+
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile('config.py', silent=True)
@@ -24,7 +29,7 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-
+    print()
     # a simple page that says hello
     @app.route('/hello')
     def hello():
