@@ -15,7 +15,6 @@ import requests
 
 bp = Blueprint('workflow', __name__, url_prefix='/api/workflow')
 
-
 @bp.route('/create', methods=('GET', 'POST'))
 @token_required
 def create_workflow(username):
@@ -28,7 +27,6 @@ def create_workflow(username):
 @bp.route('/workflow_status', methods=('GET',))
 def workflow_status():
     return ''
-
 
 @bp.route('/get', methods=('GET',))
 @token_required
@@ -82,3 +80,4 @@ def callSeqera(api_path, payload, method):
         return requests.get(full_api_path, headers=headers)
     else:
         return requests.post(full_api_path, json=json.loads(payload), headers=headers)
+

@@ -26,4 +26,4 @@ CREATE TABLE IF NOT EXISTS instantiation (
     project_id INTEGER NOT NULL,
     seqera_workflow_id TEXT NOT NULL,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-)
+);
