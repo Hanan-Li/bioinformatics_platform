@@ -1,0 +1,87 @@
+{
+    "name": "rnaseq",
+    "id": 0,
+    "nodes": [
+        {
+            "name": "index",
+            "input_parameters": [{
+                "name": "transcriptome_file",
+                "type": "text_file",
+                "file_type": "fa",
+                "multiple_input": false
+            }]
+        },
+        {
+            "name": "fastqc",
+            "input_parameters": [{
+                "name": "ggal_files",
+                "type": "text_file",
+                "file_type": "fq",
+                "multiple_input": true
+            }]
+        },
+        {
+            "name": "quant",
+            "input_parameters": [{
+                "name": "input",
+                "type": "node_output",
+                "file_type": "",
+                "multiple_input": false
+            },
+            {
+                "name": "ggal_files",
+                "type": "text_file",
+                "file_type": "fq",
+                "multiple_input": true
+            }]
+        },
+        {
+            "name": "emit",
+            "input_parameters": [{
+                "name": "quant",
+                "type": "node_output",
+                "file_type": "",
+                "multiple_input": false
+            },
+            {
+                "name": "fastqc",
+                "type": "node_output",
+                "file_type": "fq",
+                "multiple_input": false
+            }]
+        },
+        {
+            "name": "multiqc",
+            "input_parameters": [{
+                "name": "config",
+                "type": "directory",
+                "file_type": "",
+                "multiple_input": false
+            },
+            {
+                "name": "fastqc_emit",
+                "type": "node_output",
+                "file_type": "",
+                "multiple_input": false
+            }]
+        }
+    ],
+    "edges": [
+        {
+            "root": "index",
+            "end": "quant"
+        },
+        {
+            "root": "quant",
+            "end": "emit"
+        },
+        {
+            "root": "fastqc",
+            "end": "emit"
+        },
+        {
+            "root": "emit",
+            "end": "multiqc"
+        }
+    ]
+}

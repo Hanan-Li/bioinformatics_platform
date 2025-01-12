@@ -18,3 +18,12 @@ CREATE TABLE IF NOT EXISTS  workflow (
     project_id INTEGER NOT NULL,
     seqera_id TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS instantiation (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    workflow_id TEXT NOT NULL,
+    project_id INTEGER NOT NULL,
+    seqera_workflow_id TEXT NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)
