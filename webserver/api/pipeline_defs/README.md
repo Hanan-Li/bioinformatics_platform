@@ -1,0 +1,1 @@
+This directory contains pipeline definitions for already available pipelines. This is used for rendering in the frontend.
